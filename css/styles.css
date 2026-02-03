@@ -1,0 +1,1067 @@
+body { font-family: 'Cairo', sans-serif; }
+[dir="rtl"] { text-align: right; }
+
+.question-card, .qa-concept-card { 
+    transition: transform .18s ease, box-shadow .18s ease; 
+    border-radius: 14px; 
+}
+
+.question-card { border: 1px solid #d1d5db; }
+.qa-concept-card { border: 1px solid #60a5fa; }
+
+.question-card:hover, .qa-concept-card:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 20px rgba(16,24,40,0.06); 
+}
+
+.dark .question-card:hover, .dark .qa-concept-card:hover { 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5); 
+}
+
+.frame-neutral { border: 1px solid #d1d5db !important; }
+.frame-red { border: 1px solid #ef4444 !important; }
+.frame-green { border: 1px solid #10b981 !important; }
+.frame-yellow { border: 1px solid #f59e0b !important; }
+.frame-blue { border: 1px solid #3b82f6 !important; }
+.frame-purple { border: 1px solid #8b5cf6 !important; }
+
+.option-btn { 
+    transition: transform .08s ease, background .18s ease, border-color .18s ease, opacity .2s ease; 
+}
+.option-btn:active { transform: scale(.99); }
+.option-btn:disabled { cursor: default; }
+.option-btn.faded { opacity: .55; }
+
+.option-label { 
+    min-width: 32px; 
+    min-height: 32px; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    border-radius:9999px; 
+    background:#e0f7fa; 
+    color:#059669; 
+    font-weight:700; 
+    font-size: 0.8rem; 
+    flex-shrink: 0; 
+    margin-left: 0.75rem;
+}
+
+.is-correct { 
+    background: #ecfdf5 !important; 
+    border-color: #4ade80 !important; 
+    color: #065f46 !important; 
+}
+.dark .is-correct { 
+    background: #064e3b !important; 
+    border-color: #34d399 !important; 
+    color: #a7f3d0 !important; 
+}
+.is-wrong { 
+    background: #fff1f2 !important; 
+    border-color: #f87171 !important; 
+    color: #7f1d1d !important; 
+}
+.dark .is-wrong { 
+    background: #7f1d1d !important; 
+    border-color: #fca5a5 !important; 
+    color: #fecaca !important; 
+}
+.is-correct .option-label { background: #16a34a !important; color: white !important; }
+.is-wrong .option-label { background: #dc2626 !important; color: white !important; }
+
+.progress-track { 
+    background: #e0f2f1; 
+    border-radius: 9999px; 
+    height: 6px; 
+}
+.dark .progress-track { background: #047857; }
+
+.progress-fill { 
+    background: linear-gradient(90deg,#059669,#34d399); 
+    height: 6px; 
+    border-radius: 9999px; 
+    transition: width .4s ease; 
+}
+
+.small-muted { font-size: 0.86rem; color: #6b7280; }
+.btn-primary { background: #059669; color: white; }
+.question-title { font-size: 1rem !important; font-weight: 500; word-wrap: break-word; }
+
+.katex-display { direction: ltr !important; text-align: center !important; }
+.katex-container { direction: ltr; text-align: left; }
+
+/* تنسيق البطاقة المقالية */
+.qa-concept-card {
+    border-right: 5px solid #1e40af !important;
+    background: linear-gradient(to left, #ffffff, #fcfcfc);
+}
+
+.dark .qa-concept-card {
+    background: linear-gradient(to left, #1f2937, #111827);
+    border-right-color: #3b82f6 !important;
+}
+
+.qa-concept-card p {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* الشريط العلوي الثابت */
+#fixedTopBar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 4px 10px;
+    min-height: 44px;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    backdrop-filter: blur(4px);
+    border-bottom: 1px solid #e2e8f0;
+    z-index: 9999;
+}
+
+.dark #fixedTopBar {
+    background-color: rgba(17, 24, 39, 0.98);
+    border-bottom: 1px solid #374151;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.5); 
+    color: #f3f4f6; 
+}
+
+/* تنسيقات البحث الذكي */
+.search-highlight {
+    background-color: rgba(255, 251, 0, 0.4);
+    padding: 0 2px;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+.dark .search-highlight {
+    background-color: rgba(255, 204, 0, 0.6);
+    color: #000;
+}
+
+/* زر المفضلة */
+.favorite-btn {
+    transition: all 0.2s ease;
+    color: #d1d5db;
+}
+
+.favorite-btn.active {
+    color: #f59e0b;
+    text-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+}
+
+.favorite-btn:hover {
+    transform: scale(1.1);
+}
+
+/* بطاقة المفضلة */
+.favorite-card {
+    border-color: #f59e0b !important;
+    background: linear-gradient(to left, #fffbeb, #fef3c7) !important;
+}
+
+.dark .favorite-card {
+    background: linear-gradient(to left, #78350f, #92400e) !important;
+    border-color: #f59e0b !important;
+}
+
+/* مؤشر التمرير الناعم */
+* {
+    scroll-behavior: smooth;
+}
+
+@keyframes progress-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.shimmer-effect {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transform: translateX(-100%);
+    pointer-events: none;
+}
+
+.animate-shimmer {
+    animation: progress-shimmer 2s ease-in-out;
+}
+
+#progressFillTop {
+    transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.check-multi-btn.disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    background-color: #9ca3af !important;
+}
+
+.check-multi-btn.enabled {
+    opacity: 1 !important;
+    cursor: pointer !important;
+    background-color: #059669 !important;
+}
+
+.multi-selected {
+    background: rgba(59, 130, 246, 0.2) !important;
+    border-color: #3b82f6 !important;
+}
+
+.dark .multi-selected {
+    background: rgba(59, 130, 246, 0.3) !important;
+    border-color: #3b82f6 !important;
+}
+
+/* أنماط نظام إدارة المستخدمين */
+.login-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.user-avatar:hover {
+    transform: scale(1.1);
+}
+
+/* نوافذ منبثقة */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.dark .modal-content {
+    background: #1f2937;
+    color: white;
+}
+
+/* مؤشر التحميل */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* أزرار الإدارة */
+.admin-btn {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.admin-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+}
+
+.edit-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.action-btn:active {
+    transform: scale(0.95);
+}
+
+/* أنماط إدارة المستخدمين */
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.users-table th {
+    background: #f8fafc;
+    padding: 12px;
+    text-align: right;
+    font-weight: 600;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.users-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.users-table tr:hover {
+    background: #f8fafc;
+}
+
+.dark .users-table th {
+    background: #1e293b;
+    border-bottom: 2px solid #334155;
+}
+
+.dark .users-table td {
+    border-bottom: 1px solid #334155;
+}
+
+.dark .users-table tr:hover {
+    background: #1e293b;
+}
+
+/* حاوية الإشعارات */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10001;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.toast-success {
+    background: #10b981;
+}
+
+.toast-error {
+    background: #ef4444;
+}
+
+.toast-warning {
+    background: #f59e0b;
+}
+
+.toast-info {
+    background: #3b82f6;
+}
+
+/* نماذج الإدخال */
+.form-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: white;
+    color: #1f2937;
+    transition: all 0.2s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.dark .form-input {
+    background: #374151;
+    border-color: #4b5563;
+    color: white;
+}
+
+/* القائمة المنسدلة للمستخدم */
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 10px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    min-width: 200px;
+    z-index: 50;
+    display: none;
+}
+
+.user-dropdown.show {
+    display: block;
+}
+
+.dark .user-dropdown {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    color: #374151;
+    text-decoration: none;
+    transition: background 0.2s;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background: #f9fafb;
+}
+
+.dark .dropdown-item {
+    color: #d1d5db;
+    border-bottom: 1px solid #374151;
+}
+
+.dark .dropdown-item:hover {
+    background: #374151;
+}
+
+/* شريط قوة كلمة المرور */
+.password-strength {
+    height: 4px;
+    border-radius: 2px;
+    margin-top: 5px;
+    transition: all 0.3s;
+}
+
+.strength-weak {
+    background: #ef4444;
+    width: 25%;
+}
+
+.strength-medium {
+    background: #f59e0b;
+    width: 50%;
+}
+
+.strength-strong {
+    background: #10b981;
+    width: 75%;
+}
+
+.strength-very-strong {
+    background: #3b82f6;
+    width: 100%;
+}
+
+/* رسائل التحقق */
+.validation-message {
+    font-size: 12px;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.validation-success {
+    color: #10b981;
+}
+
+.validation-error {
+    color: #ef4444;
+}
+
+/* نمط للعناوين والملاحظات في العرض */
+.qa-header-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    border: none !important;
+    padding: 1.5rem !important;
+}
+
+.qa-note-card {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%) !important;
+    color: white !important;
+    border: none !important;
+    padding: 1.5rem !important;
+}
+
+/* أزرار التعديل والحذف للعناوين والملاحظات */
+.qa-action-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+/* توسيع حقول النص */
+textarea {
+    resize: vertical;
+    min-height: 60px;
+    max-height: 400px;
+    overflow-y: auto;
+    transition: height 0.2s ease;
+}
+
+.remove-option:hover {
+    transform: scale(1.1);
+    background: #fee2e2 !important;
+    box-shadow: 0 2px 5px rgba(220, 38, 38, 0.2);
+}
+
+/* توسيع الحاويات */
+.content-modal-content {
+    width: 95% !important;
+    max-width: 850px !important;
+    margin: 0 auto !important;
+}
+
+/* أنماط صفحة إدارة المستخدمين */
+#usersManagementView {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+}
+
+.dark #usersManagementView {
+    background: linear-gradient(to bottom, #0f172a, #1e293b);
+}
+
+#usersManagementView table {
+    min-width: 1000px;
+}
+
+#usersManagementView th, 
+#usersManagementView td {
+    padding: 12px 16px;
+    vertical-align: middle;
+}
+
+#usersManagementView th {
+    border-bottom: 2px solid #e5e7eb;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.dark #usersManagementView th {
+    border-bottom: 2px solid #374151;
+    color: #d1d5db;
+}
+
+#usersManagementView tbody tr {
+    transition: background-color 0.2s;
+}
+
+#usersManagementView tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.dark #usersManagementView tbody tr:hover {
+    background-color: #374151;
+}
+
+/* تحسين أزرار الإجراءات */
+.user-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: nowrap;
+}
+
+.user-actions button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.user-actions button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* تحسين بطاقات الإحصائيات */
+#usersManagementView .grid > div {
+    transition: transform 0.2s;
+}
+
+#usersManagementView .grid > div:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.users-management-container {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.delete-btn {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+}
+
+/* أيقونات المستخدمين حسب الصلاحيات */
+.user-icon {
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-icon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.icon-super_admin {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.icon-admin {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+}
+
+.icon-editor {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.icon-student {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+/* تحسين صفحة سجل النشاط */
+#activityLogView {
+    position: relative;
+    z-index: 10;
+    background: white;
+    min-height: calc(100vh - 70px);
+}
+
+.dark #activityLogView {
+    background: #0f172a;
+}
+
+/* التأكد من أن الصفحة تكون hidden بشكل صحيح */
+#activityLogView.hidden {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* تحسين تنسيق الجدول */
+.activity-table {
+    position: relative;
+    z-index: 1;
+}
+
+/* ترتيب الزمني للصفحات */
+#unitsView,
+#questionsView,
+#contentManagementView,
+#usersManagementView,
+#backupManagementView,
+#activityLogView {
+    position: relative;
+    z-index: 1;
+}
+
+/* عند الإخفاء */
+.hidden-view {
+    z-index: -1 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* أنماط خاصة بصفحة سجل النشاط */
+.activity-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.activity-badge-add {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.activity-badge-edit {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.activity-badge-delete {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.activity-badge-restore {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.activity-action-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    width: 100%;
+}
+
+.activity-action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.restore-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.delete-permanent-btn {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+
+
+
+
+
+/* تحسينات الطباعة */
+@media print {
+    /* ===============
+       1. الإعدادات العامة وإعادة التعيين (Global Reset)
+    ============== */
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    body, html {
+        font-family: "Cairo", "Tajawal", sans-serif !important;
+        font-size: 14px !important;
+        line-height: 1.8 !important;
+        background-color: #fff !important;
+    }
+
+    @page {
+        margin: 1.5cm !important;
+        size: auto !important;
+    }
+
+    /* الحاويات الرئيسية */
+    .container, .content-area {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* =============
+       2. العناوين والألوان (Typography & Colors)
+   ================== */
+    /* استهداف العناوين التي يجب أن تظهر باللون الأزرق */
+    .formula-card h4, .law-title, .question-title, [data-title],
+    .question, .question-text, .card-title, .title,
+    h1.title, h2.title, h3.title,
+    .question-card h1, .question-card h2, .question-card h3,
+    .question-card.qa-concept-card h4, .qa-concept-card h4,
+    #questionsList h4 {
+        color: #0D47A1 !important;
+        font-weight: bold !important;
+    }
+
+    /* استثناءات للحفاظ على لون الأسود لبقية العناصر */
+    *:not(.katex *):not(.katex-display *):not(.question-card):not(.option-label):not(.is-correct):not(.formula-card):not(table):not(th):not(td):not(.question):not(.question-text):not(.question-title):not(.card-title):not([data-title]):not(.formula-card h4) {
+        color: #000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    /* ==================
+       3. ترويسة الصفحة والمعلومات الثابتة
+    ==================== */
+   
+    
+    #fixedTopBar {
+        display: block !important;
+        visibility: visible !important;
+        position: relative !important;
+        padding: 0.3rem 0 !important;
+        margin: 0 0 3px 0 !important;
+        text-align: center !important;
+        background-color: #f7f7f7 !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* نص المؤلف بعد الشريط */
+    #fixedTopBar::after {
+        content: "إعداد/ أبو علي";
+        display: inline-block; /* منع امتداد خلفية كاملة */
+        margin-top: 2px;
+        font-weight: bold;
+        color: #1A73E8 !important;
+        font-size: 1rem;
+        background: none !important; /* إزالة أي خلفية غير مرغوبة */
+    }
+
+    /* ---------------------------
+       عنوان الوحدة
+    --------------------------- */
+    #unitTitleTop {
+        display: block !important;
+        margin: 0 0 4px 0 !important;
+        padding: 0 !important;
+        font-size: 1.5rem !important;
+        font-weight: bold !important;
+        color: #1A73E8 !important;
+        text-align: right !important;
+        line-height: 1.2 !important;
+        background-color: transparent !important; /* إزالة أي خلفية */
+    }
+
+    /* ---------------------------
+       توقيع المؤلف / الملاحظة
+    --------------------------- */
+    #authorSignature {
+        display: block !important;
+        visibility: visible !important;
+        page-break-inside: avoid !important;
+        page-break-after: always !important;
+        width: auto !important; /* التمدد حسب حجم الصفحة */
+        max-width: 100% !important;
+        box-sizing: border-box !important; /* يشمل padding و border ضمن الحجم */
+        margin: 0 0 30px 0 !important;
+        padding: 15px !important;
+        border: 2px solid #0D47A1 !important;
+        border-radius: 8px !important;
+        background-color: #E3F2FD !important;
+        position: static !important;
+    }
+
+    /* ====================
+       4. بطاقات الأسئلة والخيارات (Question Cards)
+    ============== */
+    .question-card-wrapper {
+        page-break-inside: avoid !important;
+        display: table;
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    .question-card, .qa-concept-card, .formula-card {
+        background-color: #ffffff !important;
+        border: 1px solid #000 !important;
+        border-radius: 6px !important;
+        padding: 10px 12px !important;
+        margin: 6px 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        page-break-inside: avoid !important;
+    }
+
+    /* شبكة الخيارات */
+    .options-grid {
+        display: grid !important;
+        gap: 6px !important;
+        margin: 4px 0 !important;
+    }
+
+    @media (orientation: portrait) { .options-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+    @media (orientation: landscape) { .options-grid { grid-template-columns: repeat(4, 1fr) !important; } }
+
+    .option-btn {
+        padding: 4px 6px !important;
+        font-size: 14px !important;
+        text-align: right !important;
+        background: #fff !important;
+        pointer-events: none !important;
+    }
+
+    .option-label {
+        min-width: 20px !important;
+        min-height: 20px !important;
+        font-size: 0.85rem !important;
+        border: 1px solid #999 !important;
+        background: #aaa !important;
+        color: #fff !important;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center !important;
+        margin-left: 0.5rem !important;
+    }
+
+    /* تمييز الإجابة الصحيحة */
+    .question-card .is-correct {
+        border: 2px solid #28a745 !important;
+        background: #fff !important;
+    }
+
+    .is-wrong, .faded {
+        border: none !important;
+        background: #fff !important;
+    }
+
+    /* =================
+       5. المعادلات الرياضية (KaTeX) والجداول
+    =============== */
+    .katex-display, .katex {
+        padding: 5px 0 !important;
+        color: #1565C0 !important;
+        overflow: visible !important;
+    }
+
+    .katex * { color: #1565C0 !important; }
+
+    .katex .frac-line { border-bottom: 1px solid #1a237e !important; }
+
+    .formula-card .formula-area {
+        margin: 2px 0 !important;
+        padding: 4px !important;
+        background-color: #e0f7fa !important;
+        border: 1px dashed #0097a7 !important;
+    }
+
+    table, th, td {
+        border: 1px solid #000 !important;
+        border-collapse: collapse !important;
+        padding: 4px !important;
+    }
+
+    /* ================
+       6. مناطق الشرح والنتائج
+    ================= */
+    .result-note, .explanation-steps, .formula-explanation,
+    .explanation-area, .explanation-box, .explanation-content, .result-area {
+        display: block !important;
+        visibility: visible !important;
+        margin: 2px 0 !important;
+        padding: 2px 0 !important;
+        border: none !important;
+        clear: both;
+    }
+
+    /* ==============
+       7. التحكم في الفواصل والعناصر المخفية
+    =============== */
+    /* منع انقسام العناصر الهامة بين الصفحات */
+    .question-card, .formula-box, .formula-card, .katex-display, table {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    /* إخفاء العناصر غير الضرورية عند الطباعة */
+    header, footer, nav, hr,
+    .controls-panel, .action-buttons, .save-button, .print-button,
+    .back-button, .next-button, .score-summary, .summary-box,
+    .modal-background, .modal-content, .check-btn, .check-multi-btn,
+    .alert-box, .notification-box, .hidden-print,
+    #toggleSolutionsBtn, #backToUnitsTop, #resetUnitTop,
+    #printQuestionsBtn, #solutionsControl, #solutionsTextInProgress,
+    #unitProgressTop, #quizCompletionSummary, #menuButton, 
+    #dropdownMenu, #themeToggle, #mainHeader, #practiceRoundSummary {
+        display: none !important;
+    }
+
+    /* تحسين الفقرات */
+    p {
+        orphans: 3;
+        widows: 3;
+        line-height: 1.8 !important;
+    }
+}
